@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'lunidep-pythonapp-image'
-        DOCKER_CONTAINER = 'lunidep-pythonapp'
         DOCKER_PORT = '8081'
     }
 
@@ -26,18 +25,18 @@ pipeline {
                 }
             }
         }
-        stage('Check and Free Port 8081') {
+        stage('Check and Free Port ${DOCKER_PORT}') {
             steps {
                 script {
                     // есть ли работающий контейнер на порту 8081
-                    def containerId = sh(script: "docker ps -q --filter 'publish=8081'", returnStdout: true).trim()
+                    def containerId = sh(script: "docker ps -q --filter 'publish=${DOCKER_PORT}'", returnStdout: true).trim()
                     if (containerId) {
-                        echo "Port 8081 is in use by container ${containerId}. Stopping it..."
+                        echo "Port ${DOCKER_PORT} is in use by container ${containerId}. Stopping it..."
                         sh "docker stop ${containerId}"
                         sh "docker rm ${containerId}"
                         echo "Container ${containerId} has been stopped and removed."
                     } else {
-                        echo "Port 8081 is free."
+                        echo "Port ${DOCKER_PORT} is free."
                     }
                 }
             }
