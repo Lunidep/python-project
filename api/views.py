@@ -6,6 +6,6 @@ class PingPongController(View):
         if request.path == '/ping':
             return JsonResponse({'message': 'pong'})
         elif request.path == '/pong':
-            return JsonResponse({'message': 'LOL'})
+            return JsonResponse({'message': 'ping'})
         else:
             return JsonResponse({'error': 'Not Found'}, status=404)

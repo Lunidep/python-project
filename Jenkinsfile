@@ -29,9 +29,9 @@ pipeline {
         stage('Check and Free Port 8081') {
             steps {
                 script {
-                    // Проверяем, есть ли работающий контейнер на порту 8081
+                    // есть ли работающий контейнер на порту 8081
                     def containerId = sh(script: "docker ps -q --filter 'publish=8081'", returnStdout: true).trim()
-                    if (containerId) { // Если есть работающий контейнер
+                    if (containerId) {
                         echo "Port 8081 is in use by container ${containerId}. Stopping it..."
                         sh "docker stop ${containerId}"
                         sh "docker rm ${containerId}"
@@ -52,9 +52,9 @@ pipeline {
         stage('Run PostgreSQL') {
             steps {
                 script {
-                    // Проверяем, существует ли контейнер PostgreSQL
+                    // существует ли контейнер PostgreSQL
                     def postgresContainerId = sh(script: "docker ps -q --filter 'name=postgres-db'", returnStdout: true).trim()
-                    if (!postgresContainerId) { // Если контейнер не найден
+                    if (!postgresContainerId) {
                         echo "Starting PostgreSQL container..."
                         sh '''
                             docker run -d \

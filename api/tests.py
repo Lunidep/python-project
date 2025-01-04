@@ -12,4 +12,4 @@ class PingPongTests(TestCase):
     def test_pong(self):
         response = self.client.get(reverse('pong'))
         self.assertEqual(response.status_code, 200)
-        self.assertJSONEqual(str(response.content, encoding='utf8'), {'message': 'LOL'})
+        self.assertJSONEqual(str(response.content, encoding='utf8'), {'message': 'ping'})
