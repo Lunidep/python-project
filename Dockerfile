@@ -13,10 +13,11 @@ WORKDIR /app
 COPY . .
 
 RUN pip install django==3.2
+RUN pip install telebot
 
 RUN python manage.py migrate
 
 # Открываем порт 8000 для доступа к приложению
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "run_bot", "0.0.0.0:8000"]
