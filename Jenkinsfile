@@ -62,6 +62,7 @@ pipeline {
                             -e POSTGRES_PASSWORD=admin \
                             -e POSTGRES_DB=default \
                             -p 5432:5432 \
+                            -v $(pwd)/pg-storage:/var/lib/postgresql/data \
                             postgres:latest
                         '''
                     } else {
