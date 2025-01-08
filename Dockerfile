@@ -14,6 +14,7 @@ COPY . .
 
 RUN pip install django==3.2
 RUN pip install telebot
+RUN pip install langchain-gigachat
 
 RUN python manage.py migrate
 

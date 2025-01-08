@@ -1,4 +1,5 @@
 import telebot
+from api.gigachat import giga_chat_request
 
 API_TOKEN = '7688662807:AAF8dCBOS7WO2pzWSyXt6Zl8ZR-3FZ0R8Go'
 bot = telebot.TeleBot(API_TOKEN)
@@ -9,7 +10,7 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def recommend_place(message):
-    # Реализуйте логику анализа сообщений и рекомендации мест
-    bot.reply_to(message, "Рекомендуемое место: Парк Горького")
+    ans = giga_chat_request(message)
+    bot.reply_to(message, ans)
 
 bot.polling()
