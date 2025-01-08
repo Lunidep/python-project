@@ -10,7 +10,8 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda message: True)
 def recommend_place(message):
-    ans = giga_chat_request(message.text)
-    bot.reply_to(message, ans)
+    ans = giga_chat_request(message.text) 
+    signature = "\n\ndeveloped by jvm-boyz"
+    bot.reply_to(message, ans + signature)
 
 bot.polling()
