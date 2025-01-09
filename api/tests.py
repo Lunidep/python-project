@@ -1,7 +1,6 @@
 from django.test import TestCase
-
-from django.test import TestCase
 from django.urls import reverse
+
 
 class PingPongTests(TestCase):
     def test_ping(self):
