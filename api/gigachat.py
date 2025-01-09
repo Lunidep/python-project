@@ -7,12 +7,15 @@ giga = GigaChat(credentials=auth,
                 verify_ssl_certs=False
                 )
 
-system_promt = "Порекомендуй наилучшее место для проведения досуга по запросу пользователя"
+system_prompt = ("Порекомендуй наилучшее место для проведения досуга по запросу пользователя. "
+                 "Если не указан город, рекомендуй в Москве. Если запрос пользователя "
+                 "не подходит под тему \"проведение досуга\", то ответь "
+                 "\"Извините, не могу подобрать место, перефразируйте сообщение.\"")
 
 
 def giga_chat_request(msg: str):
     msgs = [
-        SystemMessage(content=system_promt),
+        SystemMessage(content=system_prompt),
         HumanMessage(content=msg)
     ]
     answer = giga(msgs)

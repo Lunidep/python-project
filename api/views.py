@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.views import View
 
+
 class PingPongController(View):
     def get(self, request, *args, **kwargs):
         if request.path == '/ping':
